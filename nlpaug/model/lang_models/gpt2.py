@@ -25,7 +25,7 @@ class Gpt2(LanguageModels):
             
         self.model_path = model_path
 
-        self.tokenizer = AutoTokenizer.from_pretrained(model_path)
+        self.tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-neo-125M", bos_token='<|startoftext|>', eos_token='<|endoftext|>', pad_token='<|pad|>')
         self.pad_id = 1 # No padding for GPT2, https://github.com/huggingface/transformers/issues/2630
         if silence:
             # Transformers thrown an warning regrading to weight initialization. It is expected
